@@ -643,15 +643,16 @@ define('FPDF_FONTPATH','fpdf16/font/');
 		$pdf->Cell(10,10,'R$'.$valor10,0,0);
 	}
 	$acu = ((float) $v1 + (float) $v2 + (float) $v3 + (float) $v4 + (float) $v5 + (float) $v6 + (float) $v7 + (float) $v8 + (float) $v9 + (float) $v10);	    
-	$pdf->Ln(7);
-        $pdf->SetFont('Arial','',10);
-        $pdf->MultiCell(50,50,utf8_decode($obs));
-        $pdf->Ln(7);
+	$pdf->Ln(10);
+    $pdf->SetFont('Arial','',8);
+	$pdf->Cell(18);
+    $pdf->MultiCell(165,3,'Obs: '.utf8_decode($obs),1);
+    $pdf->Ln(3);
 	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(18);
 	$pdf->Cell(125);
 	$pdf->Cell(10,10,'Total: R$ '.number_format($acu,2,',','.'),0,0);
-	$pdf->Ln(7);
+	$pdf->Ln(6);
 	$pdf->SetFont('Arial','',8);
 	$pdf->Cell(0,10,utf8_decode('Valores sujeito a autorização do convênio acima citado.                                           Data: '.$data),0,0,'R');
 	$pdf->Output(); //Gera o pdf e permite o download
