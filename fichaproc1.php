@@ -78,7 +78,7 @@ $resultadop = mysql_query($sqlp);
 					
 				   var cod = $(this).val();
 				   var conv = $('#convenio1').val();
-				   var aux = 1;
+				   var aux = '';
 				   $.ajax({
 				         url: 'getinfo.php',
 				         //dataType: 'html',

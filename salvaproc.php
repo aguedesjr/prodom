@@ -250,15 +250,15 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	//Data no formato do banco de dados
 	$datac = implode("-", array_reverse(explode("/", $data2)));
 	
-	// Separa em dia, mês e ano
+	// Separa em dia, mï¿½s e ano
     list($dia, $mes, $ano) = explode('/', $datan);
     
-    // Descobre que dia é hoje e retorna a unix timestamp
+    // Descobre que dia ï¿½ hoje e retorna a unix timestamp
     $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
     // Descobre a unix timestamp da data de nascimento do fulano
     $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
     
-    // Depois apenas fazemos o cálculo já citado :)
+    // Depois apenas fazemos o cï¿½lculo jï¿½ citado :)
     $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
     
 	//Converte para o formato para ser calculado o valor pelo sistema
@@ -281,7 +281,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	reset($auxcod);
 	foreach ($auxcod as $cod) {
 		if (!empty($cod)){
-			//Salva as informações na tabela procodont para gerar os relatórios
+			//Salva as informaï¿½ï¿½es na tabela procodont para gerar os relatï¿½rios
 			$sqli = "INSERT INTO procodont (nomepaciente, procedimento, profissional, convenio, data) VALUES ('$nome', '$cod', '$profissional', '$convenio1', '$datac');";
 			// Executa o comando SQL
 			mysql_query($sqli);
@@ -433,7 +433,8 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	} else {
 		$pdf->Cell(10,10,'R$'.$valor5,0,0);
 	}
-	$acu = ((float) $v1 * (float) $dente) + ((float) $v2 * (float) $dente2) + ((float) $v3 * (float) $dente3) + ((float) $v4 * (float) $dente4) + ((float) $v5 * (float) $dente5);	    
+	//$acu = ((float) $v1 * (float) $dente) + ((float) $v2 * (float) $dente2) + ((float) $v3 * (float) $dente3) + ((float) $v4 * (float) $dente4) + ((float) $v5 * (float) $dente5);
+	$acu = ((float) $v1 + (float) $v2 + (float) $v3 + (float) $v4 + (float) $v5);	    
 	$pdf->Ln(20);
 	$pdf->SetFont('Arial','B',12);
 	$pdf->Cell(18);
