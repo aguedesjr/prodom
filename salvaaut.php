@@ -322,6 +322,12 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	}else {if (isset($_POST["valor10"])){
   		$valor10 = utf8_decode($_POST["valor10"]);
 	}};
+        
+        if (isset($_GET["obs"])){
+  		$obs = utf8_decode($_GET["obs"]);
+	}else {if (isset($_POST["obs"])){
+  		$obs = utf8_decode($_POST["obs"]);
+	}};
 	
 	$sql = "SELECT data, matricula, cpf, endereco, bairro, cep, telefone, celular, id FROM pacientes WHERE nome = '$buscanome';";
 	$resultado = mysql_query($sql);
@@ -341,15 +347,15 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	//Data no formato do banco de dados
 	$datac = implode("-", array_reverse(explode("/", $data)));
 	
-	// Separa em dia, m�s e ano
+	// Separa em dia, m�s e ano
     list($dia, $mes, $ano) = explode('/', $datan);
     
-    // Descobre que dia � hoje e retorna a unix timestamp
+    // Descobre que dia � hoje e retorna a unix timestamp
     $hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
     // Descobre a unix timestamp da data de nascimento do fulano
     $nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
     
-    // Depois apenas fazemos o c�lculo j� citado :)
+    // Depois apenas fazemos o c�lculo j� citado :)
     $idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
 	
 	//Converte para o formato para ser calculado o valor pelo sistema
@@ -452,11 +458,11 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->Cell(50,10,utf8_decode('CRO: ').$resultp[1],0,0);
 	$pdf->Ln(7);
 	$pdf->Cell(50,10,'                                                                                                                                                                  ',0,0);
-	$pdf->Ln(15);
-	$pdf->SetFont('Arial','BIU',14);
+	$pdf->Ln(7);
+	$pdf->SetFont('Arial','BIU',12);
 	$pdf->Cell(85);
 	$pdf->Cell(0,10,utf8_decode('Serviços'),0,1);
-	$pdf->SetFont('Arial','U',12);
+	$pdf->SetFont('Arial','U',11);
 	$pdf->Cell(15);
 	$pdf->Cell(10,10,utf8_decode('Código'),0,0);
 	$pdf->Cell(13);
@@ -466,14 +472,14 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->Cell(7);
 	$pdf->Cell(16,10,'Valor',0,0);
 	$pdf->Ln(10);
-	$pdf->SetFont('Arial','',12);
+	$pdf->SetFont('Arial','',10);
 	$pdf->Cell(18);
 	$pdf->Cell(10,10,$codconvenio,0,0);
 	$pdf->Cell(10);
 	$pdf->MultiCell(100,5,$proc,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("138");
+    $pdf->SetY("128");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente,0,0);
@@ -490,7 +496,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc2,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("150");
+    $pdf->SetY("140");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente2,0,0);
@@ -507,7 +513,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc3,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("162");
+    $pdf->SetY("152");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente3,0,0);
@@ -524,7 +530,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc4,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("174");
+    $pdf->SetY("164");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente4,0,0);
@@ -541,7 +547,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc5,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("186");
+    $pdf->SetY("176");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente5,0,0);
@@ -558,7 +564,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc6,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("198");
+    $pdf->SetY("188");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente6,0,0);
@@ -575,7 +581,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc7,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("210");
+    $pdf->SetY("200");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente7,0,0);
@@ -592,7 +598,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc8,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("222");
+    $pdf->SetY("212");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente8,0,0);
@@ -609,7 +615,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc9,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("234");
+    $pdf->SetY("224");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente9,0,0);
@@ -626,7 +632,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->MultiCell(100,5,$proc10,0);
 	//$pdf->Cell(80);
 	//posiciona verticalmente
-    $pdf->SetY("246");
+    $pdf->SetY("236");
     //posiciona horizontalmente
     $pdf->SetX("158");
 	$pdf->Cell(10,10,$dente10,0,0);
@@ -636,15 +642,18 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	} else {
 		$pdf->Cell(10,10,'R$'.$valor10,0,0);
 	}
-	$acu = ((float) $v1 * (float) $dente) + ((float) $v2 * (float) $dente2) + ((float) $v3 * (float) $dente3) + ((float) $v4 * (float) $dente4) + ((float) $v5 * (float) $dente5) + ((float) $v6 * (float) $dente6) + ((float) $v7 * (float) $dente7) + ((float) $v8 * (float) $dente8) + ((float) $v9 * (float) $dente9) + ((float) $v10 * (float) $dente10);	    
-	$pdf->Ln(12);
-	$pdf->SetFont('Arial','B',12);
+	$acu = ((float) $v1 + (float) $v2 + (float) $v3 + (float) $v4 + (float) $v5 + (float) $v6 + (float) $v7 + (float) $v8 + (float) $v9 + (float) $v10);	    
+	$pdf->Ln(7);
+        $pdf->SetFont('Arial','',10);
+        $pdf->MultiCell(50,50,utf8_decode($obs));
+        $pdf->Ln(7);
+	$pdf->SetFont('Arial','B',10);
 	$pdf->Cell(18);
 	$pdf->Cell(125);
 	$pdf->Cell(10,10,'Total: R$ '.number_format($acu,2,',','.'),0,0);
 	$pdf->Ln(7);
 	$pdf->SetFont('Arial','',8);
-	$pdf->Cell(0,10,utf8_decode('OBS: Valores sujeito a autorização do convênio acima citado.                                      Data: '.$data),0,0,'R');
+	$pdf->Cell(0,10,utf8_decode('Valores sujeito a autorização do convênio acima citado.                                           Data: '.$data),0,0,'R');
 	$pdf->Output(); //Gera o pdf e permite o download
 
 ?>

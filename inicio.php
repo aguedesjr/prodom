@@ -12,6 +12,7 @@ require_once ("configs/conn.php");
 	<link rel='stylesheet' type='text/css' href='css/menu.css' />
 	<link rel="shortcut icon" type="image/x-icon" href="imagens/PRODOM.ico"/>
 	<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'></script>
+	<meta charset="UTF-8">
 </head>
 <body>
 <? include ("menu.php"); ?>

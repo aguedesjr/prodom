@@ -519,6 +519,12 @@ $resultadop = mysql_query($sqlp);
 				</tbody>
 			</table>
 	</div></td></tr></table><br>
+        <table>
+			<tr>
+				<td align="right" width="95"><label>Obs:</label></td>
+                                <td align="left"><textarea rows="3" cols="50" name="obs" value="" class="text ui-widget-content ui-corner-all"></textarea></td>
+			</tr>
+		</table><br>
 	<!--<table><tr><td align="right">
 		<div id="users-contain" class="ui-widget">
 			<table id="users" class="ui-widget ui-widget-content">
