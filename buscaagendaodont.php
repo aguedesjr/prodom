@@ -73,6 +73,10 @@ $resultadoh = mysql_query($sqlh);
 			   $(this).button({icons: {primary: "ui-icon-document"}});
 			   $(this).click();
 			});
+			$('a[name="voltar"]').each(function () {
+               $(this).button({icons: {primary: "ui-icon-arrowthick-1-w"}});
+               $(this).click();
+            });
 			$('a[name="editar"]').each(function () {
 			   $(this).button({icons: {primary: "ui-icon-pencil"}});
 			   $(this).click();
@@ -103,6 +107,7 @@ $resultadoh = mysql_query($sqlh);
 				<td align="right" width="60"><label>Data:</label></td>
 				<td align="left"><input type="text" name="data1" id="data1" readonly="readonly" size=10 value="<? echo $data;?>" class="text ui-widget-content ui-corner-all"></td>
 				<td><a name="novo" href="novoagendaodont.php?data=<? echo $data;?>&profissional=<? echo $profissional;?>">Novo</a> <br/></td>
+				<td><a name="voltar" href="agendaodont.php">Voltar</a> <br/></td>
 		</table><br>
 		<table><tr><td align="right">
 		<div id="users-contain" class="ui-widget">
