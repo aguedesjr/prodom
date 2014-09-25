@@ -77,6 +77,7 @@ mysql_query($sql);
 // Finaliza a conexão com o banco de dados
 mysql_close($conexao);
 // Redireciona para a página de usuários
-header("location:inicio.php");
+//header("location:inicio.php");
+header("location:buscaagendaodont.php?data=".$data1."&profissional=".$profissional);
  ?>
 
