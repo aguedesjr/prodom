@@ -36,6 +36,26 @@ $resultadocod4 = mysql_query($sqlcod4);
 $sqlcod5 = "SELECT codconvenio FROM autorizacao_codigoconvenio WHERE codautorizacao = '$fichaaut'";
 $resultadocod5 = mysql_query($sqlcod5);
 
+//Busca informacoes dos codigos autorizados
+$sqlcod6 = "SELECT codconvenio FROM autorizacao_codigoconvenio WHERE codautorizacao = '$fichaaut'";
+$resultadocod6 = mysql_query($sqlcod6);
+
+//Busca informacoes dos codigos autorizados
+$sqlcod7 = "SELECT codconvenio FROM autorizacao_codigoconvenio WHERE codautorizacao = '$fichaaut'";
+$resultadocod7 = mysql_query($sqlcod7);
+
+//Busca informacoes dos codigos autorizados
+$sqlcod8 = "SELECT codconvenio FROM autorizacao_codigoconvenio WHERE codautorizacao = '$fichaaut'";
+$resultadocod8 = mysql_query($sqlcod8);
+
+//Busca informacoes dos codigos autorizados
+$sqlcod9 = "SELECT codconvenio FROM autorizacao_codigoconvenio WHERE codautorizacao = '$fichaaut'";
+$resultadocod9 = mysql_query($sqlcod9);
+
+//Busca informacoes dos codigos autorizados
+$sqlcod10 = "SELECT codconvenio FROM autorizacao_codigoconvenio WHERE codautorizacao = '$fichaaut'";
+$resultadocod10 = mysql_query($sqlcod10);
+
 //Busca informacoes do paciente
 $sqlpac = "SELECT nome FROM pacientes WHERE id = '$linhasa[1]'";
 $resultadopac = mysql_query($sqlpac);
@@ -103,7 +123,7 @@ $resultadop = mysql_query($sqlp);
 					
 				   var cod = $(this).val();
 				   var conv = $('#convenio1').val();
-				   var aux = 1;
+				   var aux = '';
 				   $.ajax({
 				         url: 'getinfo.php',
 				         //dataType: 'html',
@@ -128,7 +148,7 @@ $resultadop = mysql_query($sqlp);
 					
 				   var cod = $(this).val();
 				   var conv = $('#convenio1').val();
-				   var aux = 1;
+				   var aux = '';
 				   $.ajax({
 				         url: 'getinfo.php',
 				         //dataType: 'html',
@@ -153,7 +173,7 @@ $resultadop = mysql_query($sqlp);
 					
 				   var cod = $(this).val();
 				   var conv = $('#convenio1').val();
-				   var aux = 1;
+				   var aux = '';
 				   $.ajax({
 				         url: 'getinfo.php',
 				         //dataType: 'html',
@@ -178,7 +198,7 @@ $resultadop = mysql_query($sqlp);
 					
 				   var cod = $(this).val();
 				   var conv = $('#convenio1').val();
-				   var aux = 1;
+				   var aux = '';
 				   $.ajax({
 				         url: 'getinfo.php',
 				         //dataType: 'html',
@@ -198,6 +218,131 @@ $resultadop = mysql_query($sqlp);
 				   });
 				}
 			});
+			$('#codconvenio6').change(function(){
+                if( $(this).val() ) {
+                    
+                   var cod = $(this).val();
+                   var conv = $('#convenio1').val();
+                   var aux = '';
+                   $.ajax({
+                         url: 'getinfo.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data){
+                           $("input[name='proc6']").val(data);
+                          }
+                   });
+                   $.ajax({
+                         url: 'getpreco.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data1){
+                           $("input[name='dente6']").val(aux);  
+                           $("input[name='valor6']").val(data1);
+                          }
+                   });
+                }
+            });
+            $('#codconvenio7').change(function(){
+                if( $(this).val() ) {
+                    
+                   var cod = $(this).val();
+                   var conv = $('#convenio1').val();
+                   var aux = '';
+                   $.ajax({
+                         url: 'getinfo.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data){
+                           $("input[name='proc7']").val(data);
+                          }
+                   });
+                   $.ajax({
+                         url: 'getpreco.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data1){
+                           $("input[name='dente7']").val(aux);  
+                           $("input[name='valor7']").val(data1);
+                          }
+                   });
+                }
+            });
+            $('#codconvenio8').change(function(){
+                if( $(this).val() ) {
+                    
+                   var cod = $(this).val();
+                   var conv = $('#convenio1').val();
+                   var aux = '';
+                   $.ajax({
+                         url: 'getinfo.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data){
+                           $("input[name='proc8']").val(data);
+                          }
+                   });
+                   $.ajax({
+                         url: 'getpreco.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data1){
+                           $("input[name='dente8']").val(aux);  
+                           $("input[name='valor8']").val(data1);
+                          }
+                   });
+                }
+            });
+            $('#codconvenio9').change(function(){
+                if( $(this).val() ) {
+                    
+                   var cod = $(this).val();
+                   var conv = $('#convenio1').val();
+                   var aux = '';
+                   $.ajax({
+                         url: 'getinfo.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data){
+                           $("input[name='proc9']").val(data);
+                          }
+                   });
+                   $.ajax({
+                         url: 'getpreco.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data1){
+                           $("input[name='dente9']").val(aux);  
+                           $("input[name='valor9']").val(data1);
+                          }
+                   });
+                }
+            });
+            $('#codconvenio10').change(function(){
+                if( $(this).val() ) {
+                    
+                   var cod = $(this).val();
+                   var conv = $('#convenio1').val();
+                   var aux = '';
+                   $.ajax({
+                         url: 'getinfo.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data){
+                           $("input[name='proc10']").val(data);
+                          }
+                   });
+                   $.ajax({
+                         url: 'getpreco.php',
+                         //dataType: 'html',
+                         data: {codigo:cod, convenio:conv},
+                         success: function(data1){
+                           $("input[name='dente10']").val(aux);  
+                           $("input[name='valor10']").val(data1);
+                          }
+                   });
+                }
+            });
 			$( "#tabs" ).tabs();
 			$("#data").datepicker({
 			    dateFormat: 'dd/mm/yy',
@@ -351,6 +496,66 @@ $resultadop = mysql_query($sqlp);
 						<td><input type="text" name="dente5" id="dente5" size=3 value="" class="text ui-widget-content ui-corner-all"></td>
 						<td><input type="text" name="valor5" id="valor5" size=11 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
 					</tr>
+					<tr>
+                        <td><select name="codconvenio6" id="codconvenio6" class="text ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <? while ($linhascod6 = mysql_fetch_array($resultadocod6, MYSQL_NUM)){ ?>
+                                <option value=<? echo $linhascod6[0];?>><? echo $linhascod6[0];?></option>
+                                <?};?>
+                            </select>
+                        </td>
+                        <td><input type="text" name="proc6" id="proc6" size=35 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                        <td><input type="text" name="dente6" id="dente6" size=3 value="" class="text ui-widget-content ui-corner-all"></td>
+                        <td><input type="text" name="valor6" id="valor6" size=11 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                    </tr>
+                    <tr>
+                        <td><select name="codconvenio7" id="codconvenio7" class="text ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <? while ($linhascod7 = mysql_fetch_array($resultadocod7, MYSQL_NUM)){ ?>
+                                <option value=<? echo $linhascod7[0];?>><? echo $linhascod7[0];?></option>
+                                <?};?>
+                            </select>
+                        </td>
+                        <td><input type="text" name="proc7" id="proc7" size=35 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                        <td><input type="text" name="dente7" id="dente7" size=3 value="" class="text ui-widget-content ui-corner-all"></td>
+                        <td><input type="text" name="valor7" id="valor7" size=11 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                    </tr>
+                    <tr>
+                        <td><select name="codconvenio8" id="codconvenio8" class="text ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <? while ($linhascod8 = mysql_fetch_array($resultadocod8, MYSQL_NUM)){ ?>
+                                <option value=<? echo $linhascod8[0];?>><? echo $linhascod8[0];?></option>
+                                <?};?>
+                            </select>
+                        </td>
+                        <td><input type="text" name="proc8" id="proc8" size=35 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                        <td><input type="text" name="dente8" id="dente8" size=3 value="" class="text ui-widget-content ui-corner-all"></td>
+                        <td><input type="text" name="valor8" id="valor8" size=11 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                    </tr>
+                    <tr>
+                        <td><select name="codconvenio9" id="codconvenio9" class="text ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <? while ($linhascod9 = mysql_fetch_array($resultadocod9, MYSQL_NUM)){ ?>
+                                <option value=<? echo $linhascod9[0];?>><? echo $linhascod9[0];?></option>
+                                <?};?>
+                            </select>
+                        </td>
+                        <td><input type="text" name="proc9" id="proc9" size=35 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                        <td><input type="text" name="dente9" id="dente9" size=3 value="" class="text ui-widget-content ui-corner-all"></td>
+                        <td><input type="text" name="valor9" id="valor9" size=11 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                    </tr>
+                    <tr>
+                        <td><select name="codconvenio10" id="codconvenio10" class="text ui-widget-content ui-corner-all">
+                                <option value=""></option>
+                                <? while ($linhascod10 = mysql_fetch_array($resultadocod10, MYSQL_NUM)){ ?>
+                                <option value=<? echo $linhascod10[0];?>><? echo $linhascod10[0];?></option>
+                                <?};?>
+                            </select>
+                        </td>
+                        <td><input type="text" name="proc10" id="proc10" size=35 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                        <td><input type="text" name="dente10" id="dente10" size=3 value="" class="text ui-widget-content ui-corner-all"></td>
+                        <td><input type="text" name="valor10" id="valor10" size=11 value="" class="text ui-widget-content ui-corner-all" readonly="readonly"></td>
+                    </tr>
 				</tbody>
 			</table>
 	</div></td></tr></table><br>
