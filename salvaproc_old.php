@@ -21,8 +21,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 		    //Move para a direita
 		    $this->Cell(65);
 		    //Titulo
-		    $this->Image('imagens/logo_prodom1.jpg',43,8,70); //Lateral, Vertical, Tamanho
-		    $this->Image('imagens/logo_prodom1.jpg',180,8,70); //Lateral, Vertical, Tamanho
+		    $this->Image('imagens/logo_prodom1.jpg',60,8,100); //Lateral, Vertical, Tamanho
 		    //$this->Cell(65);
 		    //$this->Cell(70,10,'Guia de Autorização',0,0,'C');
 		    //Move para a direita
@@ -30,7 +29,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 		    //Logo
 		   //$this->Image('logo1.jpg',170,8,33);
 		    //Quebra de linha
-		    $this->Ln(17);
+		    $this->Ln(30);
 		}
 
 		//Rodapé
@@ -363,10 +362,6 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$sqlp = "SELECT nome, crmcro FROM profissionais WHERE id = '$profissional';";
 	$resultadop = mysql_query($sqlp);
 	$resultp = mysql_fetch_array($resultadop);
-    
-    $sqlcon = "SELECT nome FROM convenios WHERE id = '$convenio1';";
-    $resultadocon = mysql_query($sqlcon);
-    $resultcon = mysql_fetch_array($resultadocon);
 	
 	$datan = implode("/", array_reverse(explode("-", $result[0])));
 	
@@ -433,215 +428,79 @@ define('FPDF_FONTPATH','fpdf16/font/');
     //$pdf = new MEM_IMAGE;
     $pdf->AliasNbPages(); //Recebe o total de páginas
     $pdf->AddPage(); //Coloca uma página em branco
-    $pdf->Line(148,0,148,210); //Adiciona a linha no centro da pagina
-    
-                    //BLOCO DO NOME GUIA DE PROCEDIMENTOS
-    //-----------------------------------------------------------------------------------------------
-    $pdf->SetFont('Arial','B',12);
-    $pdf->Cell(33);
+    $pdf->SetFont('Arial','B',16);
+    $pdf->Cell(65);
     $pdf->Cell(70,10,utf8_decode('Guia de Procedimentos'),0,0,'C');
-    $pdf->SetX(180);
-    $pdf->Cell(70,10,utf8_decode('Guia de Procedimentos'),0,0,'C');
-    //-----------------------------------------------------------------------------------------------
-                    
-                    //BLOCO DA LINHA
-    //-----------------------------------------------------------------------------------------------
-    $pdf->SetFont('Arial','U',8);
+    $pdf->SetFont('Arial','U',12);
     $pdf->Ln(7);
-    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
+    $pdf->Cell(50,10,'                                                                                                                                                                  ',0,0);
     $pdf->Ln(7);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DA PRIMEIRA LINHA
-    //-----------------------------------------------------------------------------------------------    
-    $pdf->SetFont('Arial','U',8);
-    $pdf->Cell(1);
+    $pdf->SetFont('Arial','U',12);
+    $pdf->Cell(15);
     $pdf->Cell(50,10,'Nome: '.$buscanome,0,0);
-    $pdf->Cell(50);
-    $pdf->Cell(50,10,'Data de Nasc.: '.$datan,0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(1);
-    $pdf->Cell(50,10,'Nome: '.$buscanome,0,0);
-    $pdf->Cell(50);
+    $pdf->Cell(65);
     $pdf->Cell(50,10,'Data de Nasc.: '.$datan,0,0);
     $pdf->Ln(7);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DA SEGUNDA LINHA
-    //-----------------------------------------------------------------------------------------------
-    $pdf->Cell(1);
-    $pdf->Cell(45,10,utf8_decode('Convênio: ').$resultcon[0],0,0);
-    $pdf->Cell(20);
-    $pdf->Cell(40,10,utf8_decode('Matricula: ').$result[1],0,0);
-    $pdf->Cell(1);
-    $pdf->Cell(50,10,utf8_decode('CPF: ').$result[2],0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(1);
-    $pdf->Cell(45,10,utf8_decode('Convênio: ').$resultcon[0],0,0);
-    $pdf->Cell(20);
-    $pdf->Cell(40,10,utf8_decode('Matricula: ').$result[1],0,0);
-    $pdf->Cell(1);
-    $pdf->Cell(50,10,utf8_decode('CPF: ').$result[2],0,0);
-    $pdf->Ln(7);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DA TERCEIRA LINHA
-    //-----------------------------------------------------------------------------------------------
-    $pdf->Cell(1);
-    $pdf->Cell(70,10,utf8_decode('Endereço: ').$result[3],0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(70,10,utf8_decode('Endereço: ').$result[3],0,0);
-    $pdf->Ln(7);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DA QUARTA LINHA
-    //-----------------------------------------------------------------------------------------------
-    $pdf->Cell(1);
-    $pdf->Cell(30,10,utf8_decode('CEP: ').$result[5],0,0);
+    $pdf->Cell(15);
+    $pdf->Cell(50,10,utf8_decode('Convênio: ').$resultcon[0],0,0);
+    $pdf->Cell(15);
+    $pdf->Cell(50,10,utf8_decode('Matricula: ').$result[1],0,0);
     $pdf->Cell(10);
-    $pdf->Cell(50,10,utf8_decode('Bairro: ').$result[4],0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(1);
+    $pdf->Cell(50,10,utf8_decode('CPF: ').$result[2],0,0);
+    $pdf->Ln(7);
+    $pdf->Cell(15);
+    $pdf->Cell(70,10,utf8_decode('Endereço: ').$result[3],0,0);
+    $pdf->Ln(7);
+    $pdf->Cell(15);
     $pdf->Cell(30,10,utf8_decode('CEP: ').$result[5],0,0);
     $pdf->Cell(10);
     $pdf->Cell(50,10,utf8_decode('Bairro: ').$result[4],0,0);
     $pdf->Ln(7);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DA QUINTA LINHA
-    //-----------------------------------------------------------------------------------------------
-    $pdf->Cell(1);
-    $pdf->Cell(30,10,utf8_decode('Telefone: ').$result[6],0,0);
-    $pdf->Cell(30);
-    $pdf->Cell(50,10,utf8_decode('Celular: ').$result[7],0,0);
-    $pdf->Cell(5);
-    $pdf->Cell(50,10,utf8_decode('Idade: ').$idade,0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(1);
+    $pdf->Cell(15);
     $pdf->Cell(30,10,utf8_decode('Telefone: ').$result[6],0,0);
     $pdf->Cell(30);
     $pdf->Cell(50,10,utf8_decode('Celular: ').$result[7],0,0);
     $pdf->Cell(5);
     $pdf->Cell(50,10,utf8_decode('Idade: ').$idade,0,0);
     $pdf->Ln(7);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DA SEXTA LINHA
-    //-----------------------------------------------------------------------------------------------
-    $pdf->Cell(1);
+    $pdf->Cell(15);
     $pdf->Cell(50,10,utf8_decode('Profissional: ').$resultp[0],0,0);
     $pdf->Cell(65);
     $pdf->Cell(50,10,utf8_decode('CRO: ').$resultp[1],0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(1);
-    $pdf->Cell(50,10,utf8_decode('Profissional: ').$resultp[0],0,0);
-    $pdf->Cell(65);
-    $pdf->Cell(50,10,utf8_decode('CRO: ').$resultp[1],0,0);
-    $pdf->Ln(4);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DA LINHA
-    //-----------------------------------------------------------------------------------------------
-    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
-    $pdf->Ln(5);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DE SERVICOS
-    //-----------------------------------------------------------------------------------------------
-    $pdf->SetFont('Arial','BIU',10);
-    $pdf->Cell(57);
-    $pdf->Cell(0,10,utf8_decode('Serviços'),0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(57);
-    $pdf->Cell(0,10,utf8_decode('Serviços'),0,0);
-    $pdf->Ln(5);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DE CATEGORIAS
-    //-----------------------------------------------------------------------------------------------
-    $pdf->SetFont('Arial','U',8);
-    $pdf->Cell(1);
-    $pdf->Cell(7,10,utf8_decode('Código'),0,0);
-    $pdf->Cell(7);
-    $pdf->Cell(45,10,'Procedimento',0,0);
-    $pdf->Cell(40);
-    $pdf->Cell(10,10,'Dente',0,0);
+    $pdf->Ln(7);
+    $pdf->Cell(50,10,'                                                                                                                                                                  ',0,0);
+    $pdf->Ln(7);
+    $pdf->SetFont('Arial','BIU',12);
+    $pdf->Cell(85);
+    $pdf->Cell(0,10,utf8_decode('Serviços'),0,1);
+    $pdf->SetFont('Arial','U',11);
+    $pdf->Cell(15);
+    $pdf->Cell(10,10,utf8_decode('Código'),0,0);
+    $pdf->Cell(13);
+    $pdf->Cell(50,10,'Procedimento',0,0);
+    $pdf->Cell(55);
+    $pdf->Cell(16,10,'Dente',0,0);
     $pdf->Cell(7);
     $pdf->Cell(16,10,'Valor',0,0);
-    $pdf->SetX(149);
-    $pdf->Cell(1);
-    $pdf->Cell(7,10,utf8_decode('Código'),0,0);
-    $pdf->Cell(7);
-    $pdf->Cell(45,10,'Procedimento',0,0);
-    $pdf->Cell(40);
-    $pdf->Cell(10,10,'Dente',0,0);
-    $pdf->Cell(7);
-    $pdf->Cell(16,10,'Valor',0,0);
-    $pdf->Ln(4);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DENTE 1
-    //-----------------------------------------------------------------------------------------------
-    $pdf->SetFont('Arial','',8);
-    $pdf->Cell(3);
-    $pdf->Cell(7,10,$codconvenio,0,0);
-    $pdf->Cell(4);
-    //posiciona verticalmente
-    $pdf->SetY("96");
-    //posiciona horizontalmente
-    $pdf->SetX("25");
-    $pdf->MultiCell(85,5,$proc,0);
+    $pdf->Ln(10);
+    $pdf->SetFont('Arial','',10);
+    $pdf->Cell(18);
+    $pdf->Cell(10,10,$codconvenio,0,0);
+    $pdf->Cell(10);
+    $pdf->MultiCell(100,5,$proc,0);
     //$pdf->Cell(80);
     //posiciona verticalmente
-    $pdf->SetY("94");
+    $pdf->SetY("128");
     //posiciona horizontalmente
-    $pdf->SetX("112");
+    $pdf->SetX("158");
     $pdf->Cell(10,10,$dente,0,0);
     $pdf->Cell(6);
-    //posiciona verticalmente
-    $pdf->SetY("94");
-    //posiciona horizontalmente
-    $pdf->SetX("123");
-    if (empty($codconvenio)) {
-        $pdf->Cell(10,10,$valor,0,0);
-    } else {
-        $pdf->Cell(10,10,'R$'.$valor,0,0);
-    }
-    $pdf->SetX(149);
-    $pdf->SetFont('Arial','',8);
-    $pdf->Cell(3);
-    $pdf->Cell(7,10,$codconvenio,0,0);
-    $pdf->Cell(4);
-    //posiciona verticalmente
-    $pdf->SetY("96");
-    //posiciona horizontalmente
-    $pdf->SetX("164");
-    $pdf->MultiCell(85,5,$proc,0);
-    //$pdf->Cell(80);
-    //posiciona verticalmente
-    $pdf->SetY("94");
-    //posiciona horizontalmente
-    $pdf->SetX("251");
-    $pdf->Cell(10,10,$dente,0,0);
-    $pdf->Cell(6);
-    //posiciona verticalmente
-    $pdf->SetY("94");
-    //posiciona horizontalmente
-    $pdf->SetX("262");
     if (empty($codconvenio)) {
         $pdf->Cell(10,10,$valor,0,0);
     } else {
         $pdf->Cell(10,10,'R$'.$valor,0,0);
     }
     $pdf->Ln(12);
-    //-----------------------------------------------------------------------------------------------
-    
-                    //BLOCO DENTE 2
-    //-----------------------------------------------------------------------------------------------
     $pdf->Cell(18);
     $pdf->Cell(10,10,$codconvenio2,0,0);
     $pdf->Cell(10);
@@ -659,8 +518,6 @@ define('FPDF_FONTPATH','fpdf16/font/');
         $pdf->Cell(10,10,'R$'.$valor2,0,0);
     }
     $pdf->Ln(12);
-    //-----------------------------------------------------------------------------------------------
-    
     $pdf->Cell(18);
     $pdf->Cell(10,10,$codconvenio3,0,0);
     $pdf->Cell(10);
