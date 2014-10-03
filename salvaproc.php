@@ -234,6 +234,126 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	}else {if (isset($_POST["valor5"])){
   		$valor5 = utf8_decode($_POST["valor5"]);
 	}};
+    
+    if (isset($_GET["codconvenio6"])){
+        $codconvenio6 = utf8_decode($_GET["codconvenio6"]);
+    }else {if (isset($_POST["codconvenio6"])){
+        $codconvenio6 = utf8_decode($_POST["codconvenio6"]);
+    }};
+    
+    if (isset($_GET["proc6"])){
+        $proc6 = utf8_decode($_GET["proc6"]);
+    }else {if (isset($_POST["proc6"])){
+        $proc6 = utf8_decode($_POST["proc6"]);
+    }};
+    
+    if (isset($_GET["dente6"])){
+        $dente6 = utf8_decode($_GET["dente6"]);
+    }else {if (isset($_POST["dente6"])){
+        $dente6 = utf8_decode($_POST["dente6"]);
+    }};
+    
+    if (isset($_GET["valor6"])){
+        $valor6 = utf8_decode($_GET["valor6"]);
+    }else {if (isset($_POST["valor6"])){
+        $valor6 = utf8_decode($_POST["valor6"]);
+    }};
+    
+    if (isset($_GET["codconvenio7"])){
+        $codconvenio7 = utf8_decode($_GET["codconvenio7"]);
+    }else {if (isset($_POST["codconvenio7"])){
+        $codconvenio7 = utf8_decode($_POST["codconvenio7"]);
+    }};
+    
+    if (isset($_GET["proc7"])){
+        $proc7 = utf8_decode($_GET["proc7"]);
+    }else {if (isset($_POST["proc7"])){
+        $proc7 = utf8_decode($_POST["proc7"]);
+    }};
+    
+    if (isset($_GET["dente7"])){
+        $dente7 = utf8_decode($_GET["dente7"]);
+    }else {if (isset($_POST["dente7"])){
+        $dente7 = utf8_decode($_POST["dente7"]);
+    }};
+    
+    if (isset($_GET["valor7"])){
+        $valor7 = utf8_decode($_GET["valor7"]);
+    }else {if (isset($_POST["valor7"])){
+        $valor7 = utf8_decode($_POST["valor7"]);
+    }};
+    
+    if (isset($_GET["codconvenio8"])){
+        $codconvenio8 = utf8_decode($_GET["codconvenio8"]);
+    }else {if (isset($_POST["codconvenio8"])){
+        $codconvenio8 = utf8_decode($_POST["codconvenio8"]);
+    }};
+    
+    if (isset($_GET["proc8"])){
+        $proc8 = utf8_decode($_GET["proc8"]);
+    }else {if (isset($_POST["proc8"])){
+        $proc8 = utf8_decode($_POST["proc8"]);
+    }};
+    
+    if (isset($_GET["dente8"])){
+        $dente8 = utf8_decode($_GET["dente8"]);
+    }else {if (isset($_POST["dente8"])){
+        $dente8 = utf8_decode($_POST["dente8"]);
+    }};
+    
+    if (isset($_GET["valor8"])){
+        $valor8 = utf8_decode($_GET["valor8"]);
+    }else {if (isset($_POST["valor8"])){
+        $valor8 = utf8_decode($_POST["valor8"]);
+    }};
+    
+    if (isset($_GET["codconvenio9"])){
+        $codconvenio9 = utf8_decode($_GET["codconvenio9"]);
+    }else {if (isset($_POST["codconvenio9"])){
+        $codconvenio9 = utf8_decode($_POST["codconvenio9"]);
+    }};
+    
+    if (isset($_GET["proc9"])){
+        $proc9 = utf8_decode($_GET["proc9"]);
+    }else {if (isset($_POST["proc9"])){
+        $proc9 = utf8_decode($_POST["proc9"]);
+    }};
+    
+    if (isset($_GET["dente9"])){
+        $dente9 = utf8_decode($_GET["dente9"]);
+    }else {if (isset($_POST["dente9"])){
+        $dente9 = utf8_decode($_POST["dente9"]);
+    }};
+    
+    if (isset($_GET["valor9"])){
+        $valor9 = utf8_decode($_GET["valor9"]);
+    }else {if (isset($_POST["valor9"])){
+        $valor9 = utf8_decode($_POST["valor9"]);
+    }};
+    
+    if (isset($_GET["codconvenio10"])){
+        $codconvenio10 = utf8_decode($_GET["codconvenio10"]);
+    }else {if (isset($_POST["codconvenio10"])){
+        $codconvenio10 = utf8_decode($_POST["codconvenio10"]);
+    }};
+    
+    if (isset($_GET["proc10"])){
+        $proc10 = utf8_decode($_GET["proc10"]);
+    }else {if (isset($_POST["proc10"])){
+        $proc10 = utf8_decode($_POST["proc10"]);
+    }};
+    
+    if (isset($_GET["dente10"])){
+        $dente10 = utf8_decode($_GET["dente10"]);
+    }else {if (isset($_POST["dente10"])){
+        $dente10 = utf8_decode($_POST["dente10"]);
+    }};
+    
+    if (isset($_GET["valor10"])){
+        $valor10 = utf8_decode($_GET["valor10"]);
+    }else {if (isset($_POST["valor10"])){
+        $valor10 = utf8_decode($_POST["valor10"]);
+    }};
 	
 	$sql = "SELECT data, matricula, cpf, endereco, bairro, cep, telefone, celular FROM pacientes WHERE nome = '$buscanome';";
 	$resultado = mysql_query($sql);
@@ -276,8 +396,23 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	//Converte para o formato para ser calculado o valor pelo sistema
 	$v5 = str_replace(".","",$valor5);
 	$v5 = str_replace(",",".",$v5);
+    //Converte para o formato para ser calculado o valor pelo sistema
+    $v6 = str_replace(".","",$valor6);
+    $v6 = str_replace(",",".",$v6);
+    //Converte para o formato para ser calculado o valor pelo sistema
+    $v7 = str_replace(".","",$valor7);
+    $v7 = str_replace(",",".",$v7);
+    //Converte para o formato para ser calculado o valor pelo sistema
+    $v8 = str_replace(".","",$valor8);
+    $v8 = str_replace(",",".",$v8);
+    //Converte para o formato para ser calculado o valor pelo sistema
+    $v9 = str_replace(".","",$valor9);
+    $v9 = str_replace(",",".",$v9);
+    //Converte para o formato para ser calculado o valor pelo sistema
+    $v10 = str_replace(".","",$valor10);
+    $v10 = str_replace(",",".",$v10);
 	
-	$auxcod = array("$codconvenio","$codconvenio2", "$codconvenio3", "$codconvenio4", "$codconvenio5");
+	$auxcod = array("$codconvenio","$codconvenio2", "$codconvenio3", "$codconvenio4", "$codconvenio5", "$codconvenio6","$codconvenio7", "$codconvenio8", "$codconvenio9", "$codconvenio10");
 	reset($auxcod);
 	foreach ($auxcod as $cod) {
 		if (!empty($cod)){
