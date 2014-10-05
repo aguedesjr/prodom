@@ -559,6 +559,12 @@ $resultadop = mysql_query($sqlp);
 				</tbody>
 			</table>
 	</div></td></tr></table><br>
+	<table>
+            <tr>
+                <td align="right" width="95"><label>Obs:</label></td>
+                                <td align="left"><textarea rows="3" cols="50" name="obs" value="" class="text ui-widget-content ui-corner-all"></textarea></td>
+            </tr>
+        </table><br>
 		<table align="center">
 			<tr>
 				<td><input type="hidden" name="metodo" value="incluir"></td>

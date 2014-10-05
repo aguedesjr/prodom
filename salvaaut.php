@@ -323,10 +323,10 @@ define('FPDF_FONTPATH','fpdf16/font/');
   		$valor10 = utf8_decode($_POST["valor10"]);
 	}};
         
-        if (isset($_GET["obs"])){
-  		$obs = utf8_decode($_GET["obs"]);
+    if (isset($_GET["obs"])){
+  		$obs = $_GET["obs"];
 	}else {if (isset($_POST["obs"])){
-  		$obs = utf8_decode($_POST["obs"]);
+  		$obs = $_POST["obs"];
 	}};
 	
 	$sql = "SELECT data, matricula, cpf, endereco, bairro, cep, telefone, celular, id FROM pacientes WHERE nome = '$buscanome';";
