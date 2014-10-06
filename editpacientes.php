@@ -13,11 +13,14 @@ require_once ("configs/conn.php");
 	<link rel='stylesheet' type='text/css' href='css/menu.css' />
 	<script src='js/jquery-1.9.1.js'></script>
 	<script src='js/jquery-ui-1.10.3.custom.js'></script>
-	<script type="text/javascript" src="js/jquery.maskedinput.js"/></script>
 	<link rel='stylesheet' type='text/css' href='css/cupertino/jquery-ui-1.10.3.custom.css' />
 	<link rel="shortcut icon" type="image/x-icon" href="imagens/PRODOM.ico"/>
 	<meta charset="UTF-8">
-		
+	<style>
+        .ui-autocomplete-loading {
+            background: white url("imagens/ui-anim_basic_16x16.gif") right center no-repeat;
+        }
+</style>	
 	<script>
 		$(function() {
 			$( "#tabs" ).tabs();
@@ -43,6 +46,7 @@ require_once ("configs/conn.php");
                success: function(data){
                      $('#buscanome').autocomplete(
                      {
+                           delay: 0,
                            source: data,
                            minLength: 2
                      });
