@@ -10,45 +10,46 @@ require_once ("fpdf16/fpdf.php");
 define('FPDF_FONTPATH','fpdf16/font/');
 
 	class PDF extends FPDF
-	{
-		//Cabeçalho
-		function Header()
-		{
-		    //Logo
-		    //$this->Image('images/telefone.jpg',10,8,33);
-		    //Coloca a fonte do título com Arial, negrito, 16
-		    //$this->SetFont('Arial','B',16);
-		    //Move para a direita
-		    $this->Cell(65);
-		    //Titulo
-		    $this->Image('imagens/logo_prodom1.jpg',60,8,100); //Lateral, Vertical, Tamanho
-		    //$this->Cell(65);
-		    //$this->Cell(70,10,'Guia de Autorização',0,0,'C');
-		    //Move para a direita
-		    $this->Cell(70);
-		    //Logo
-		   //$this->Image('logo1.jpg',170,8,33);
-		    //Quebra de linha
-		    $this->Ln(30);
-		}
+    {
+        //Cabeçalho
+        function Header()
+        {
+            //Logo
+            //$this->Image('images/telefone.jpg',10,8,33);
+            //Coloca a fonte do título com Arial, negrito, 16
+            //$this->SetFont('Arial','B',16);
+            //Move para a direita
+            $this->Cell(65);
+            //Titulo
+            $this->Image('imagens/logo_prodom1.jpg',43,8,70); //Lateral, Vertical, Tamanho
+            $this->Image('imagens/logo_prodom1.jpg',180,8,70); //Lateral, Vertical, Tamanho
+            //$this->Cell(65);
+            //$this->Cell(70,10,'Guia de Autorização',0,0,'C');
+            //Move para a direita
+            $this->Cell(70);
+            //Logo
+           //$this->Image('logo1.jpg',170,8,33);
+            //Quebra de linha
+            $this->Ln(17);
+        }
 
-		//Rodapé
-		function Footer()
-		{
-		    //Posiciona a 1.5 cm do fim da pagina
-		    $this->SetY(-15);
-		    //Coloca a fonte do rodape com Arial, italico, 8
-		    $this->SetFont('Arial','I',8);
-		    //Numero da pagina
-		    //$this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
-		    //if (isset($_GET["data"])){
-  				//$data = utf8_decode($_GET["data"]);
-			//}else {if (isset($_POST["data"])){
-  				//$data = utf8_decode($_POST["data"]);
-			//}};
-		    //$this->Cell(0,10,utf8_decode('OBS: Valores sujeito a autorização do convênio acima citado.                                      Data: '.$data),0,0,'R');
-		}
-	}
+        //Rodapé
+        function Footer()
+        {
+            //Posiciona a 1.5 cm do fim da pagina
+            $this->SetY(-15);
+            //Coloca a fonte do rodape com Arial, italico, 8
+            $this->SetFont('Arial','I',8);
+            //Numero da pagina
+            //$this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
+            //if (isset($_GET["data"])){
+                //$data = utf8_decode($_GET["data"]);
+            //}else {if (isset($_POST["data"])){
+                //$data = utf8_decode($_POST["data"]);
+            //}};
+            //$this->Cell(0,10,utf8_decode('OBS: Valores sujeito a autorização do convênio acima citado.                                      Data: '.$data),0,0,'R');
+        }
+    }
 	
 	$usuario = $_SESSION[login];
 	$mes1 = date("m");
@@ -410,251 +411,740 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	}
 	
 	//Instanciação da classe herdada
-	$pdf=new PDF("P","mm","A4"); //P->Retrato, L->Paisagem; mm-> milímetros; A4-> padrão da folha
-	//$pdf = new MEM_IMAGE;
-	$pdf->AliasNbPages(); //Recebe o total de páginas
-	$pdf->AddPage(); //Coloca uma página em branco
-	$pdf->SetFont('Arial','B',16);
-	$pdf->Cell(65);
-	$pdf->Cell(70,10,utf8_decode('Guia de Autorização'),0,0,'C');
-	$pdf->SetFont('Arial','U',12);
-	$pdf->Ln(7);
-	$pdf->Cell(50,10,'                                                                                                                                                                  ',0,0);
-	$pdf->Ln(7);
-	$pdf->SetFont('Arial','U',12);
-	$pdf->Cell(15);
-	$pdf->Cell(50,10,utf8_decode('Código: ').$resultc[0],0,0);
-	$pdf->Ln(7);
-	$pdf->Cell(15);
-	$pdf->Cell(50,10,'Nome: '.$buscanome,0,0);
-	$pdf->Cell(65);
-	$pdf->Cell(50,10,'Data de Nasc.: '.$datan,0,0);
-	$pdf->Ln(7);
-	$pdf->Cell(15);
-	$pdf->Cell(50,10,utf8_decode('Convênio: ').$resultcon[0],0,0);
-	$pdf->Cell(15);
-	$pdf->Cell(50,10,utf8_decode('Matricula: ').$result[1],0,0);
-	$pdf->Cell(10);
-	$pdf->Cell(50,10,utf8_decode('CPF: ').$result[2],0,0);
-	$pdf->Ln(7);
-	$pdf->Cell(15);
-	$pdf->Cell(70,10,utf8_decode('Endereço: ').$result[3],0,0);
-	$pdf->Ln(7);
-	$pdf->Cell(15);
-	$pdf->Cell(30,10,utf8_decode('CEP: ').$result[5],0,0);
-	$pdf->Cell(10);
-	$pdf->Cell(50,10,utf8_decode('Bairro: ').$result[4],0,0);
-	$pdf->Ln(7);
-	$pdf->Cell(15);
-	$pdf->Cell(30,10,utf8_decode('Telefone: ').$result[6],0,0);
-	$pdf->Cell(30);
-	$pdf->Cell(50,10,utf8_decode('Celular: ').$result[7],0,0);
-	$pdf->Cell(5);
-	$pdf->Cell(50,10,utf8_decode('Idade: ').$idade,0,0);
-	$pdf->Ln(7);
-	$pdf->Cell(15);
-	$pdf->Cell(50,10,utf8_decode('Profissional: ').$resultp[0],0,0);
-	$pdf->Cell(65);
-	$pdf->Cell(50,10,utf8_decode('CRO: ').$resultp[1],0,0);
-	$pdf->Ln(7);
-	$pdf->Cell(50,10,'                                                                                                                                                                  ',0,0);
-	$pdf->Ln(7);
-	$pdf->SetFont('Arial','BIU',12);
-	$pdf->Cell(85);
-	$pdf->Cell(0,10,utf8_decode('Serviços'),0,1);
-	$pdf->SetFont('Arial','U',11);
-	$pdf->Cell(15);
-	$pdf->Cell(10,10,utf8_decode('Código'),0,0);
-	$pdf->Cell(13);
-	$pdf->Cell(50,10,'Procedimento',0,0);
-	$pdf->Cell(55);
-	$pdf->Cell(16,10,'Dente',0,0);
-	$pdf->Cell(7);
-	$pdf->Cell(16,10,'Valor',0,0);
-	$pdf->Ln(10);
-	$pdf->SetFont('Arial','',10);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
+    $pdf=new PDF("L","mm","A4"); //P->Retrato, L->Paisagem; mm-> milímetros; A4-> padrão da folha
+    //$pdf = new MEM_IMAGE;
+    $pdf->AliasNbPages(); //Recebe o total de páginas
+    $pdf->AddPage(); //Coloca uma página em branco
+    $pdf->Line(148,0,148,210); //Adiciona a linha no centro da pagina
+    
+                    //BLOCO DO NOME GUIA DE PROCEDIMENTOS
+    //-----------------------------------------------------------------------------------------------
+    $pdf->SetFont('Arial','B',12);
+    $pdf->Cell(33);
+    $pdf->Cell(70,10,utf8_decode('Guia de Autorização'),0,0,'C');
+    $pdf->SetX(180);
+    $pdf->Cell(70,10,utf8_decode('Guia de Autorização'),0,0,'C');
+    //-----------------------------------------------------------------------------------------------
+                    
+                    //BLOCO DA LINHA
+    //-----------------------------------------------------------------------------------------------
+    $pdf->SetFont('Arial','U',8);
+    $pdf->Ln(3);
+    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DA PRIMEIRA LINHA
+    //-----------------------------------------------------------------------------------------------    
+    $pdf->SetFont('Arial','U',8);
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,utf8_decode('Código: ').$resultc[0],0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,utf8_decode('Código: ').$resultc[0],0,0);
+    $pdf->Ln(7);
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,'Nome: '.$buscanome,0,0);
+    $pdf->Cell(50);
+    $pdf->Cell(50,10,'Data de Nasc.: '.$datan,0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,'Nome: '.$buscanome,0,0);
+    $pdf->Cell(50);
+    $pdf->Cell(50,10,'Data de Nasc.: '.$datan,0,0);
+    $pdf->Ln(7);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DA SEGUNDA LINHA
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(1);
+    $pdf->Cell(45,10,utf8_decode('Convênio: ').$resultcon[0],0,0);
+    $pdf->Cell(20);
+    $pdf->Cell(40,10,utf8_decode('Matricula: ').$result[1],0,0);
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,utf8_decode('CPF: ').$result[2],0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(1);
+    $pdf->Cell(45,10,utf8_decode('Convênio: ').$resultcon[0],0,0);
+    $pdf->Cell(20);
+    $pdf->Cell(40,10,utf8_decode('Matricula: ').$result[1],0,0);
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,utf8_decode('CPF: ').$result[2],0,0);
+    $pdf->Ln(7);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DA TERCEIRA LINHA
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(1);
+    $pdf->Cell(70,10,utf8_decode('Endereço: ').$result[3],0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(70,10,utf8_decode('Endereço: ').$result[3],0,0);
+    $pdf->Ln(7);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DA QUARTA LINHA
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(1);
+    $pdf->Cell(30,10,utf8_decode('CEP: ').$result[5],0,0);
+    $pdf->Cell(10);
+    $pdf->Cell(50,10,utf8_decode('Bairro: ').$result[4],0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(1);
+    $pdf->Cell(30,10,utf8_decode('CEP: ').$result[5],0,0);
+    $pdf->Cell(10);
+    $pdf->Cell(50,10,utf8_decode('Bairro: ').$result[4],0,0);
+    $pdf->Ln(7);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DA QUINTA LINHA
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(1);
+    $pdf->Cell(30,10,utf8_decode('Telefone: ').$result[6],0,0);
+    $pdf->Cell(30);
+    $pdf->Cell(50,10,utf8_decode('Celular: ').$result[7],0,0);
+    $pdf->Cell(5);
+    $pdf->Cell(50,10,utf8_decode('Idade: ').$idade,0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(1);
+    $pdf->Cell(30,10,utf8_decode('Telefone: ').$result[6],0,0);
+    $pdf->Cell(30);
+    $pdf->Cell(50,10,utf8_decode('Celular: ').$result[7],0,0);
+    $pdf->Cell(5);
+    $pdf->Cell(50,10,utf8_decode('Idade: ').$idade,0,0);
+    $pdf->Ln(7);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DA SEXTA LINHA
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,utf8_decode('Profissional: ').$resultp[0],0,0);
+    $pdf->Cell(65);
+    $pdf->Cell(50,10,utf8_decode('CRO: ').$resultp[1],0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(1);
+    $pdf->Cell(50,10,utf8_decode('Profissional: ').$resultp[0],0,0);
+    $pdf->Cell(65);
+    $pdf->Cell(50,10,utf8_decode('CRO: ').$resultp[1],0,0);
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DA LINHA
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(50,10,'                                                                                                                                                                            ',0,0);
+    $pdf->Ln(5);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DE SERVICOS
+    //-----------------------------------------------------------------------------------------------
+    $pdf->SetFont('Arial','BIU',10);
+    $pdf->Cell(57);
+    $pdf->Cell(0,10,utf8_decode('Serviços'),0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(57);
+    $pdf->Cell(0,10,utf8_decode('Serviços'),0,0);
+    $pdf->Ln(5);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DE CATEGORIAS
+    //-----------------------------------------------------------------------------------------------
+    $pdf->SetFont('Arial','U',8);
+    $pdf->Cell(1);
+    $pdf->Cell(7,10,utf8_decode('Código'),0,0);
+    $pdf->Cell(7);
+    $pdf->Cell(45,10,'Procedimento',0,0);
+    $pdf->Cell(40);
+    $pdf->Cell(10,10,'Dente',0,0);
+    $pdf->Cell(7);
+    $pdf->Cell(16,10,'Valor',0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(1);
+    $pdf->Cell(7,10,utf8_decode('Código'),0,0);
+    $pdf->Cell(7);
+    $pdf->Cell(45,10,'Procedimento',0,0);
+    $pdf->Cell(40);
+    $pdf->Cell(10,10,'Dente',0,0);
+    $pdf->Cell(7);
+    $pdf->Cell(16,10,'Valor',0,0);
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 1
+    //-----------------------------------------------------------------------------------------------
+    $pdf->SetFont('Arial','',8);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("96");
+    //posiciona horizontalmente
+    $pdf->SetX("25");
+    $pdf->MultiCell(85,5,$proc,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("94");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("94");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio)) {
+        $pdf->Cell(10,10,$valor,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("96");
+    //posiciona horizontalmente
+    $pdf->SetX("164");
+    $pdf->MultiCell(85,5,$proc,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("94");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("94");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio)) {
+        $pdf->Cell(10,10,$valor,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 2
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio2,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("100");
+    //posiciona horizontalmente
+    $pdf->SetX("25");
+    $pdf->MultiCell(85,5,$proc2,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("98");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente2,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("98");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio2)) {
+        $pdf->Cell(10,10,$valor2,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor2,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio2,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("100");
+    //posiciona horizontalmente
+    $pdf->SetX("164");
+    $pdf->MultiCell(85,5,$proc2,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("98");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente2,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("98");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio2)) {
+        $pdf->Cell(10,10,$valor2,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor2,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 3
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio3,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("104");
+    //posiciona horizontalmente
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc3,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("102");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente3,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("102");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio3)) {
+        $pdf->Cell(10,10,$valor3,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor3,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio3,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("104");
+    //posiciona horizontalmente
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc3,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("102");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente3,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("102");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio3)) {
+        $pdf->Cell(10,10,$valor3,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor3,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 4
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio4,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("108");
+    //posiciona horizontalmente
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc4,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("106");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente4,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("106");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio4)) {
+        $pdf->Cell(10,10,$valor4,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor4,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio4,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("108");
+    //posiciona horizontalmente
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc4,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("106");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente4,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("106");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio4)) {
+        $pdf->Cell(10,10,$valor4,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor4,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 5
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio5,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("112");
+    //posiciona horizontalmente
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc5,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("110");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente5,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("110");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio5)) {
+        $pdf->Cell(10,10,$valor5,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor5,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio5,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("112");
+    //posiciona horizontalmente
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc5,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("110");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente5,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("110");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio5)) {
+        $pdf->Cell(10,10,$valor5,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor5,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 6
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio6,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("116");
+    //posiciona horizontalmente
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc6,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("114");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente6,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("114");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio6)) {
+        $pdf->Cell(10,10,$valor6,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor6,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio6,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("116");
+    //posiciona horizontalmente
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc6,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("114");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente6,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("114");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio6)) {
+        $pdf->Cell(10,10,$valor6,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor6,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 7
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio7,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("120");
+    //posiciona horizontalmente
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc7,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("118");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente7,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("118");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio7)) {
+        $pdf->Cell(10,10,$valor7,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor7,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio7,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("120");
+    //posiciona horizontalmente
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc7,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("118");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente7,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("118");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio7)) {
+        $pdf->Cell(10,10,$valor7,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor7,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 8
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio8,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("124");
+    //posiciona horizontalmente
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc8,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("122");
+    //posiciona horizontalmente
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente8,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("122");
+    //posiciona horizontalmente
+    $pdf->SetX("123");
+    if (empty($codconvenio8)) {
+        $pdf->Cell(10,10,$valor8,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor8,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio8,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("124");
+    //posiciona horizontalmente
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc8,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("122");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente8,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("122");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio8)) {
+        $pdf->Cell(10,10,$valor8,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor8,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 9
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio9,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
     $pdf->SetY("128");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio)) {
-		$pdf->Cell(10,10,$valor,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio2,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc2,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("140");
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc9,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("126");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente2,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio2)) {
-		$pdf->Cell(10,10,$valor2,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor2,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio3,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc3,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("152");
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente9,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("126");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente3,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio3)) {
-		$pdf->Cell(10,10,$valor3,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor3,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio4,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc4,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("164");
+    $pdf->SetX("123");
+    if (empty($codconvenio9)) {
+        $pdf->Cell(10,10,$valor9,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor9,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio9,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("128");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente4,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio4)) {
-		$pdf->Cell(10,10,$valor4,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor4,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio5,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc5,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("176");
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc9,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("126");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente5,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio5)) {
-		$pdf->Cell(10,10,$valor5,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor5,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio6,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc6,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("188");
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente9,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("126");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente6,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio6)) {
-		$pdf->Cell(10,10,$valor6,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor6,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio7,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc7,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("200");
+    $pdf->SetX("262");
+    if (empty($codconvenio9)) {
+        $pdf->Cell(10,10,$valor9,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor9,0,0);
+    }
+    $pdf->Ln(4);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DENTE 10
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio10,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("132");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente7,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio7)) {
-		$pdf->Cell(10,10,$valor7,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor7,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio8,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc8,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("212");
+    $pdf->SetX("25" );
+    $pdf->MultiCell(85,5,$proc10,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("130");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente8,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio8)) {
-		$pdf->Cell(10,10,$valor8,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor8,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio9,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc9,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("224");
+    $pdf->SetX("112");
+    $pdf->Cell(10,10,$dente10,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("130");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente9,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio9)) {
-		$pdf->Cell(10,10,$valor9,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor9,0,0);
-	}
-	$pdf->Ln(12);
-	$pdf->Cell(18);
-	$pdf->Cell(10,10,$codconvenio10,0,0);
-	$pdf->Cell(10);
-	$pdf->MultiCell(100,5,$proc10,0);
-	//$pdf->Cell(80);
-	//posiciona verticalmente
-    $pdf->SetY("236");
+    $pdf->SetX("123");
+    if (empty($codconvenio10)) {
+        $pdf->Cell(10,10,$valor10,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor10,0,0);
+    }
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(7,10,$codconvenio10,0,0);
+    $pdf->Cell(4);
+    //posiciona verticalmente
+    $pdf->SetY("132");
     //posiciona horizontalmente
-    $pdf->SetX("158");
-	$pdf->Cell(10,10,$dente10,0,0);
-	$pdf->Cell(6);
-	if (empty($codconvenio10)) {
-		$pdf->Cell(10,10,$valor10,0,0);
-	} else {
-		$pdf->Cell(10,10,'R$'.$valor10,0,0);
-	}
-	$acu = ((float) $v1 + (float) $v2 + (float) $v3 + (float) $v4 + (float) $v5 + (float) $v6 + (float) $v7 + (float) $v8 + (float) $v9 + (float) $v10);	    
-	$pdf->Ln(10);
+    $pdf->SetX("164" );
+    $pdf->MultiCell(85,5,$proc10,0);
+    //$pdf->Cell(80);
+    //posiciona verticalmente
+    $pdf->SetY("130");
+    //posiciona horizontalmente
+    $pdf->SetX("251");
+    $pdf->Cell(10,10,$dente10,0,0);
+    $pdf->Cell(6);
+    //posiciona verticalmente
+    $pdf->SetY("130");
+    //posiciona horizontalmente
+    $pdf->SetX("262");
+    if (empty($codconvenio10)) {
+        $pdf->Cell(10,10,$valor10,0,0);
+    } else {
+        $pdf->Cell(10,10,'R$'.$valor10,0,0);
+    }
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO CALCULO DO VALOR TOTAL
+    //-----------------------------------------------------------------------------------------------
+    $acu = ((float) $v1 + (float) $v2 + (float) $v3 + (float) $v4 + (float) $v5 + (float) $v6 + (float) $v7 + (float) $v8 + (float) $v9 + (float) $v10);        
+    $pdf->Ln(7);
+    $pdf->SetFont('Arial','B',10);
+    $pdf->Cell(95);
+    $pdf->Cell(10,10,'Total: R$ '.number_format($acu,2,',','.'),0,0);
+    $pdf->SetX("245");
+    $pdf->Cell(10,10,'Total: R$ '.number_format($acu,2,',','.'),0,0);
+    $pdf->Ln(10);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO DE OBSERVACAO
+    //-----------------------------------------------------------------------------------------------
     $pdf->SetFont('Arial','',8);
-	$pdf->Cell(18);
-    $pdf->MultiCell(165,3,'Obs: '.utf8_decode($obs),1);
-    $pdf->Ln(3);
-	$pdf->SetFont('Arial','B',10);
-	$pdf->Cell(18);
-	$pdf->Cell(125);
-	$pdf->Cell(10,10,'Total: R$ '.number_format($acu,2,',','.'),0,0);
-	$pdf->Ln(6);
-	$pdf->SetFont('Arial','',8);
-	$pdf->Cell(0,10,utf8_decode('Valores sujeito a autorização do convênio acima citado.                                           Data: '.$data),0,0,'R');
-	$pdf->Output(); //Gera o pdf e permite o download
+    $pdf->Cell(3);
+    $pdf->Cell(125,3,'Obs: '.utf8_decode($obs),1,0);
+    $pdf->SetX(149);
+    $pdf->Cell(3);
+    $pdf->Cell(125,3,'Obs: '.utf8_decode($obs),1,0);
+    $pdf->Ln(7);
+    //-----------------------------------------------------------------------------------------------
+    
+                    //BLOCO RODAPE
+    //-----------------------------------------------------------------------------------------------
+    $pdf->Cell(20);
+    $pdf->SetFont('Arial','',6);
+    $pdf->Cell(0,10,utf8_decode('Valores sujeito a autorização do convênio acima citado.                                           Data: '.$data),0,0);
+    $pdf->SetX(149);
+    $pdf->Cell(20);
+    $pdf->Cell(0,10,utf8_decode('Valores sujeito a autorização do convênio acima citado.                                           Data: '.$data),0,0);
+    //-----------------------------------------------------------------------------------------------
+    
+    $pdf->Output("guiadeautorizacao".$buscanome.".pdf",D); //Gera o pdf e permite o download
 
 ?>

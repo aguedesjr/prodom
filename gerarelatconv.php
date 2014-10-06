@@ -89,7 +89,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$sqlpac = "SELECT nomepaciente FROM procodont WHERE convenio = '$convenio' AND data LIKE '$anoatual-$mesatual-%' GROUP BY nomepaciente;";
 	$resultadopac = mysql_query($sqlpac);
 	
-	//Pega as informações na tabela convenios com o convenio informado
+	//Pega as informaï¿½ï¿½es na tabela convenios com o convenio informado
 	$sqlconv = "SELECT nome FROM convenios WHERE id = '$convenio';";
 	$resultadoconv = mysql_query($sqlconv);
 	$resultconv = mysql_fetch_array($resultadoconv);
@@ -142,11 +142,11 @@ define('FPDF_FONTPATH','fpdf16/font/');
 		$pdf->Cell(16,10,'Valor',0,0);
 		$pdf->Ln(10);
 			
-		//Pega as informações na tabela procodont com o profissional informado
+		//Pega as informaï¿½ï¿½es na tabela procodont com o profissional informado
 		$sql = "SELECT procedimento, profissional, data FROM procodont WHERE convenio = '$convenio' AND nomepaciente = '$relpac[0]' AND data LIKE '$anoatual-$mesatual-%';";
 		$resultado = mysql_query($sql);
 				
-		//Pega as informações na tabela profissionais com o profissional informado
+		//Pega as informaï¿½ï¿½es na tabela profissionais com o profissional informado
 		$sqlprof = "SELECT nome FROM profissionais WHERE id = '$profissional';";
 		$resultadoprof = mysql_query($sqlprof);
 		$resultprof = mysql_fetch_array($resultadoprof);
@@ -170,7 +170,7 @@ define('FPDF_FONTPATH','fpdf16/font/');
 				$sqlproc = "SELECT valor FROM procedimentos WHERE codigo = '$rel[0]';";
 				$resultadoproc = mysql_query($sqlproc);
 				$resultproc = mysql_fetch_array($resultadoproc);
-				//Escreve o valor no relatório
+				//Escreve o valor no relatï¿½rio
 				$pdf->Cell(17,10,'R$ '.$resultproc[0],0,0);
 				$pdf->Ln(10);
 				//Converte para o formato para ser calculado o valor pelo sistema
@@ -187,6 +187,6 @@ define('FPDF_FONTPATH','fpdf16/font/');
 	$pdf->Cell(18);
 	$pdf->Cell(125);
 	$pdf->Cell(10,10,'Total: R$ '.number_format($acu,2,',','.'),0,0);
-	$pdf->Output(); //Gera o pdf e permite o download
+	$pdf->Output("relatorioconvenio.pdf",D); //Gera o pdf e permite o download
 
 ?>
